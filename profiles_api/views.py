@@ -19,6 +19,7 @@ class HelloApiView(APIView):
 
     return Response({'message': 'Hello!', 'an_apiview': an_apiview})
 
+
   def post(self, request):
     """Create a hello message with our name"""
     serializer = self.serializer_class(data=request.data)
@@ -33,7 +34,7 @@ class HelloApiView(APIView):
         status = status.HTTP_400_BAD_REQUEST
       )
 
-      
+
   def put(self, request, pk=None):
     """Handle updating an object"""
     return Response({'method': 'PUT'})
