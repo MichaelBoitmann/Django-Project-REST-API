@@ -1,7 +1,11 @@
 # Profiles REST API Project doce.
 
+'''
 $ vagrant ssh
+'''
+'''
 $ cd /vagrant/
+'''
 $ source ~/env/bin/activate
 $ pip install -r requirements.txt
 $ django-admin.py startproject profiles_project .
