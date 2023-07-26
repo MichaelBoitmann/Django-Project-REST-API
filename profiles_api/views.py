@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from profiles_api import serializers
+from rest_framework import viewsets
 
 
 class HelloApiView(APIView):
@@ -12,7 +13,7 @@ class HelloApiView(APIView):
   def get(self, request, format=None):
     """Returns a list of APIView features"""
     an_apiview = [
-      'Uses HTTP methods as functiohn (get, post, patch, put, delete)',
+      'Uses HTTP methods as function (get, post, patch, put, delete)',
       'Is similar to a traditional Django View',
       'Gives you the most control over you application logic',
       'Is mapped manually to URLs',
@@ -48,3 +49,24 @@ class HelloApiView(APIView):
     """Delete an object"""
     return Response({'method': 'DELETE'})
   
+
+
+class HelloViewSet(viewsets.ViewSet):
+  """Test API ViewSet"""
+  serializer_class = serializers.HelloSerializer
+
+  def list(self, request):
+    """Return a hello message"""
+
+    a_viewset = [
+      'Uses actions (list, create, retieve, update, partial_update)',
+      'Automatically maps to URLs using Routers',
+      'Provides more vunctionality with less coce',
+    ]
+
+    return Response({'message': 'Hello!', 'a_viewset': a_viewset})
+
+
+  def create(seld, request):
+    """Create a new hellow message"""
+    serializer = self.setializer_class(data=request.data)
